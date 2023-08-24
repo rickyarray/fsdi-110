@@ -172,7 +172,7 @@ def get_product_id(id):
     if not ObjectId.is_valid(id):
         return abort(400, "Invalid id")
     db_id = ObjectId(id)
-    product = db.products.find_one({"id": id})
+    product = db.products.find_one({"_id": db_id})
     if not product:
         return abort(404, "Product not found")
     
