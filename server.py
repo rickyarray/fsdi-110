@@ -160,12 +160,15 @@ def get_coupon_code(code):
 def get_coupon_id(id):
     if not ObjectId.is_valid(id):
         return abort(400, "Invalid id")
+    
     db_id = ObjectId(id)
     coupon = db.coupons.find_one({"_id": db_id})
     if not coupon:
         return abort(404, "Coupon not found")
     
     return json.dumps(fix_id(coupon))
+
+
 
 
 @app.get("/api/products/id/<id>")
@@ -178,6 +181,18 @@ def get_product_id(id):
         return abort(404, "Product not found")
     
     return json.dumps(fix_id(product))
+
+
+# create delete endpoint to delete a product from db
+@app.delete("/api/products/id/<id>")
+def delete_product(id):
+    if not ObjectId.is_valid(id):
+        return abort(400, "Invalid id")
+    
+    db_id = ObjectId(id)
+    db.products.delete_one({"_id": db_id})
+    
+    return json.dumps({"status": "OK"})
 
 
 
