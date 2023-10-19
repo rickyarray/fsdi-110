@@ -1,3 +1,34 @@
+# .gitignore file specifies files and folders that should be ignore
+
+# create a repository
+git init
+
+# check the status
+git status
+
+# check the log
+git log
+# use q to close the log
+
+# to create snapshots
+git add -A
+git commit -m "ANY MESSAGE"
+
+
+# add a remote 
+git remote add origin <URL>
+
+# check remotes
+git remote -v
+
+
+
+# push the first time
+git push -u origin main
+
+# push the nth time
+git push
+
 
 # install virtual environment tool
 python3 -m pip install virtualenv
